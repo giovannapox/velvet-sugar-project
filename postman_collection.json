@@ -1,0 +1,313 @@
+{
+    "info": {
+        "name": "Loja Virtual - Event-Driven API",
+        "description": "E-commerce API com Kafka e Broadway",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:4000"
+        }
+    ],
+    "item": [
+        {
+            "name": "Health Check",
+            "item": [
+                {
+                    "name": "Health Check",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/health",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "health"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Orders",
+            "item": [
+                {
+                    "name": "Listar Pedidos",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "orders"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Consultar Pedido",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders/:orderId",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "orders",
+                                ":orderId"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "orderId",
+                                    "value": "COLE_O_ID_AQUI"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Criar Pedido (Produto Pronto)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"type\": \"pronto\",\n  \"customer_name\": \"João Silva\",\n  \"customer_email\": \"joao@email.com\",\n  \"delivery_address\": \"Rua das Flores, 123\",\n  \"items\": [\n    {\n      \"product_id\": \"COLE_O_ID_DO_PRODUTO\",\n      \"quantity\": 2,\n      \"unit_price\": 45.00\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "orders"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Criar Pedido (Personalizado)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"type\": \"personalizado\",\n  \"customer_name\": \"Maria Santos\",\n  \"customer_email\": \"maria@email.com\",\n  \"delivery_address\": \"Av. Principal, 456\",\n  \"items\": [\n    {\n      \"ingredient_id\": \"COLE_O_ID_DO_INGREDIENTE\",\n      \"quantity\": 2,\n      \"unit_price\": 5.50\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/orders",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "orders"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Inventory",
+            "item": [
+                {
+                    "name": "Listar Produtos",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/inventory/products",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "inventory",
+                                "products"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Listar Ingredientes",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/inventory/ingredients",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "inventory",
+                                "ingredients"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Alertas Estoque Baixo",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/inventory/low-stock",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "inventory",
+                                "low-stock"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Supply Chain",
+            "item": [
+                {
+                    "name": "Listar Remessas",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/supply/shipments",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "supply",
+                                "shipments"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Criar Remessa (Fornecedor)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"supplier_name\": \"Fornecedor ABC\",\n  \"supplier_email\": \"abc@fornecedor.com\",\n  \"notes\": \"Entrega expressa\",\n  \"items\": [\n    {\n      \"ingredient_id\": \"COLE_O_ID_DO_INGREDIENTE\",\n      \"quantity\": 50\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/supply/shipments",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "supply",
+                                "shipments"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Aprovar Remessa (Admin)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"approved_by\": \"admin@loja.com\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/supply/shipments/:shipmentId/approve",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "supply",
+                                "shipments",
+                                ":shipmentId",
+                                "approve"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "shipmentId",
+                                    "value": "COLE_O_ID_DA_REMESSA"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Rejeitar Remessa (Admin)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"reason\": \"Qualidade insuficiente\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/supply/shipments/:shipmentId/reject",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "supply",
+                                "shipments",
+                                ":shipmentId",
+                                "reject"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "shipmentId",
+                                    "value": "COLE_O_ID_DA_REMESSA"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,51 @@
+# Arquivos que NÃO devem ir para o Docker (economia de espaço e segurança)
+
+# Build artifacts
+_build/
+deps/
+*.ez
+
+# Node modules (se houver)
+node_modules/
+assets/node_modules/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test
+test/
+cover/
+
+# Logs
+*.log
+logs/
+
+# Docker files (não precisa copiar para dentro)
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Scripts de desenvolvimento
+*.bat
+*.sh
+*.cmd
+
+# Docs
+*.md
+docs/
+
+# Misc
+.env
+.env.*
+tmp/
